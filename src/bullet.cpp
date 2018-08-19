@@ -1,7 +1,7 @@
 #include <GL/glut.h>
 
 
-#include "./bullet.h"
+#include "./includes/bullet.h"
 
 #define DEFAULT_BULLET_SPEED 8
 #define DEFAULT_BULLET_DAMAGE 1

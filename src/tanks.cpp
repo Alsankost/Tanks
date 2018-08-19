@@ -101,11 +101,3 @@ void Tank::forward(int k) {
 		case TD_BACK:  this->y += k;  break;
 	}
 }
-
-void Tank::setDirection(Direction dir) {
-	this->direction = dir;
-}
-
-Direction Tank::getDirection() {
-	return this->direction;
-}

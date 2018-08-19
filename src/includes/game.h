@@ -18,6 +18,7 @@ class GameObject {
 	protected:
 		int x, y;
 		int w_mask, h_mask;
+		Direction direction;
 
 	public:
 		GameObject(int x, int y);
@@ -46,6 +47,9 @@ class GameObject {
 		int maskHeight();
 
 		Rectangle getMask();
+
+		void      setDirection(Direction dir);
+		Direction getDirection();
 };
 
 class Map {

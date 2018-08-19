@@ -7,7 +7,6 @@ class Tank : public GameObject {
 	protected:
 		bool flagHp = true;
 		bool flagFriend;
-		Direction direction;
 
 	public:
 		Tank(int x, int y, bool isFriend);
@@ -29,9 +28,6 @@ class Tank : public GameObject {
 		void turnLeft();
 		void turnRight();
 		void forward(int k);
-
-		void      setDirection(Direction dir);
-		Direction getDirection();
 };
 
 #endif

@@ -37,6 +37,14 @@ Rectangle GameObject::getMask() {
 	return Rectangle{Point{this->x, this->y}, Point{this->x + this->w_mask, this->y + this->h_mask}};
 }
 
+void GameObject::setDirection(Direction dir) {
+	this->direction = dir;
+}
+
+Direction GameObject::getDirection() {
+	return this->direction;
+}
+
 //Map=============================================
 bool Map::observeCollisions(GameObject* obj) {
 	Rectangle objMask = obj->getMask();
