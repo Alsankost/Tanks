@@ -55,9 +55,6 @@ void pressKey(int key, int xx, int yy) {
 		case GLUT_KEY_RIGHT:
 			player->sendMoveSignal(TD_RIGHT, true);
 			break;
-		case GLUT_KEY_HOME:
-			currentMap->addObject(new Bullet(player->getX(), player->getY(), player->getDirection()));
-
 	}
 }
 
@@ -78,28 +75,13 @@ void releaseKey(int key, int xx, int yy) {
 	}
 }
 
-void processNormalKeys(unsigned char key, int x, int y) {
-	//std::cout << key;
-	//if (key == 27) exit(0);
+void pressNormalKeys(unsigned char key, int x, int y) {
+	if (key == 27) exit(0);
 
-	if (key == 'w') {
-		player->setDirection(TD_FRONT);
-		player->forward(5);
-	}
-
-	if (key == 's') {
-		player->setDirection(TD_BACK);
-		player->forward(5);
-	}
-
-	if (key == 'd') {
-		player->setDirection(TD_RIGHT);
-		player->forward(5);
-	}
-
-	if (key == 'a') {
-		player->setDirection(TD_LEFT);
-		player->forward(5);
+	switch (key) {
+		case ' ':
+			player->fire(currentMap, new Bullet(player->getX(), player->getY(), player->getDirection()));
+			break;
 	}
 }
 
@@ -127,6 +109,7 @@ int main(int argc, char **argv) {
 	glutIdleFunc(render);
 
 	glutSpecialFunc(pressKey);
+	glutKeyboardFunc(pressNormalKeys);
 	glutSpecialUpFunc(releaseKey);
 	glutIgnoreKeyRepeat(0);
 

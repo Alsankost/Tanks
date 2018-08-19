@@ -40,6 +40,7 @@ void Bullet::dead(Map* map)	{}
 
 void Bullet::collision(Map* map, GameObject* obj) {
 	if (obj->isSolid()) {
+		obj->addDamage(this->damage);
 		this->flagHp = false;
 	}
 };

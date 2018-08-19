@@ -2,6 +2,7 @@
 #define __TANKS_H__
 
 #include "./game.h"
+#include "./bullet.h"
 
 class Tank : public GameObject {
 	protected:
@@ -28,6 +29,8 @@ class Tank : public GameObject {
 		void turnLeft();
 		void turnRight();
 		void forward(int k);
+
+		void fire(Map* map, Bullet* bullet);
 };
 
 #endif

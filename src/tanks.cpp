@@ -98,6 +98,16 @@ void Tank::forward(int k) {
 		case TD_RIGHT: this->x += k; break;
 		case TD_FRONT: this->y -= k; break;
 		case TD_LEFT:  this->x -= k; break;
-		case TD_BACK:  this->y += k;  break;
+		case TD_BACK:  this->y += k; break;
 	}
+}
+
+void Tank::fire(Map* map, Bullet* bullet) {
+	switch (this->direction) {
+		case TD_RIGHT: bullet->setPosition(this->x + 36, this->y + 16); break;
+		case TD_FRONT: bullet->setPosition(this->x + 16, this->y -  4); break;
+		case TD_LEFT:  bullet->setPosition(this->x -  4, this->y + 16); break;
+		case TD_BACK:  bullet->setPosition(this->x + 16, this->y + 36); break;
+	}
+	map->addObject(bullet);
 }

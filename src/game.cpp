@@ -69,12 +69,12 @@ Map::Map(int w, int h) {
 }
 
 void Map::update() {
-	for(auto it = objects.begin(); it != objects.end(); ++it) {
-		GameObject* obj = *it;
+	for (int i = 0; i < objects.size(); i++) {
+		GameObject* obj = objects[i];
 		if (obj->isDead()) {
 			obj->dead(this);
-			objects.erase(it);
-			//delete obj;
+			objects.erase(objects.begin() + i);
+			delete obj;
 			continue;
 		}
 		int xp = obj->getX(),
