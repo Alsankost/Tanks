@@ -1,11 +1,11 @@
 #include <iostream>
 #include <GL/glut.h>
 
-#include "./walls.h"
-#include "./game.h"
-#include "./tanks.h"
-#include "./player.h"
-#include "./bullet.h"
+#include "./includes/walls.h"
+#include "./includes/game.h"
+#include "./includes/tanks.h"
+#include "./includes/player.h"
+#include "./includes/bullet.h"
 
 #define W_WIDTH 640
 #define W_HEIGHT 480

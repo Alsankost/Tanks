@@ -1,6 +1,6 @@
 #include <GL/glut.h>
 
-#include "./simple_draw.h"
+#include "./includes/simple_draw.h"
 
 void drawRectangle(int x, int y, int w, int h) {
 	glBegin(GL_QUADS);

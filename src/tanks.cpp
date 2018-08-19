@@ -1,9 +1,9 @@
-#include "./tanks.h"
-#include "./simple_draw.h"
-
 #include <iostream>
 
 #include <GL/glut.h>
+
+#include "./includes/tanks.h"
+#include "./includes/simple_draw.h"
 
 Tank::Tank(int x, int y, bool isFriend):GameObject(x, y) {
 	this->flagFriend = isFriend;

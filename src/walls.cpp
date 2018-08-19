@@ -1,12 +1,8 @@
-
 #include <iostream>
 
-#include "./walls.h"
-
-#ifndef __GLUT__
-#define __GLUT__
 #include <GL/glut.h>
-#endif
+
+#include "./includes/walls.h"
 
 BrickWall::BrickWall(int x, int y):GameObject(x, y) {
 }

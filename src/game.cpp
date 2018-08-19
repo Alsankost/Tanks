@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "./game.h"
+#include "./includes/game.h"
 
 //GameObject========================================
 GameObject::GameObject(int x, int y) {
