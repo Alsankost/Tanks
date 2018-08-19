@@ -20,6 +20,14 @@ int GameObject::getY() {
 	return this->y;
 }
 
+void GameObject::setX(int x) {
+	this->x = x;
+}
+
+void GameObject::setY(int y) {
+	this->y = y;
+}
+
 void GameObject::setPosition(int x, int y) {
 	this->x = x;
 	this->y = y;
@@ -81,9 +89,33 @@ void Map::update() {
 		    yp = obj->getY();
 		obj->update(this);
 		bool stopFlag = observeCollisions(obj);
-		if (stopFlag || obj->getX() < 0 || obj->getX() + obj->maskWidth() > this->width ||
-			obj->getY() < 0 || obj->getY() + obj->maskHeight() > this->height) {
+		if (stopFlag) {
 			obj->setPosition(xp, yp);
+		}
+
+		bool outsideMap = false;
+		if (obj->getX() < 0) {
+			obj->setX(0);
+			outsideMap = true;
+		}
+
+		if (obj->getY() < 0) {
+			obj->setY(0);
+			outsideMap = true;
+		}
+
+		if (obj->getX() + obj->maskWidth() > this->width) {
+			obj->setX(this->width - obj->maskWidth());
+			outsideMap = true;
+		}
+
+		if (obj->getY() + obj->maskHeight() > this->height) {
+			obj->setY(this->height - obj->maskHeight());
+			outsideMap = true;
+		}
+
+		if (outsideMap) {
+			obj->outsideMap(this);
 		}
 	}
 }

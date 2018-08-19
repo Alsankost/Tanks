@@ -48,6 +48,8 @@ void Player::collision(Map* map, GameObject* obj) {
 	Tank::collision(map, obj);
 }
 
+void Player::outsideMap(Map* map) { }
+
 void Player::addDamage(int val) {
 	Tank::addDamage(val);
 }

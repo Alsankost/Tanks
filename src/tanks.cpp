@@ -22,6 +22,10 @@ void Tank::collision(Map* map, GameObject* obj) {
 
 }
 
+void Tank::outsideMap(Map* map) {
+
+}
+
 void Tank::addDamage(int val) {
 	if (val > 0) flagHp = false;
 }

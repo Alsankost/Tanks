@@ -1,5 +1,7 @@
 #include <GL/glut.h>
 
+#include <iostream>
+
 
 #include "./includes/bullet.h"
 
@@ -43,7 +45,12 @@ void Bullet::collision(Map* map, GameObject* obj) {
 		obj->addDamage(this->damage);
 		this->flagHp = false;
 	}
-};
+}
+
+void Bullet::outsideMap(Map* map) {
+	this->flagHp = false;
+	//std::cout << "asd";
+}
 
 void Bullet::addDamage(int val) {
 	if (val > 0) this->flagHp = false;

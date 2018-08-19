@@ -17,6 +17,9 @@ void BrickWall::update(Map* map) { }
 void BrickWall::dead(Map* map) { }
 void BrickWall::collision(Map* map, GameObject* obj) { };
 
+
+void BrickWall::outsideMap(Map* map) { }
+
 void BrickWall::addDamage(int val) {
 	if (val > 0) {
 		this->flagHp = false;

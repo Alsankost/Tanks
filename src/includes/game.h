@@ -28,7 +28,8 @@ class GameObject {
 		virtual void start(Map* map)  = 0;
 		virtual void update(Map* map) = 0;
 		virtual void dead(Map* map)	  = 0;
-		virtual void collision(Map* map, GameObject* obj) = 0;
+		virtual void collision(Map* map, GameObject* obj)  = 0;
+		virtual void outsideMap(Map* map) = 0;
 
 		virtual void addDamage(int val) = 0;
 
@@ -39,8 +40,10 @@ class GameObject {
 		virtual void draw(int x, int y) = 0;
 
 		//Native:
-		int getX();
-		int getY();
+		int  getX();
+		int  getY();
+		void setX(int x);
+		void setY(int y);
 		void setPosition(int x, int y);
 
 		int maskWidth();

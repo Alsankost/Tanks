@@ -17,6 +17,7 @@ class Tank : public GameObject {
 		virtual void update(Map* map);
 		virtual void dead(Map* map);
 		virtual void collision(Map* map, GameObject* obj);
+		virtual void outsideMap(Map* map);
 
 		virtual void addDamage(int val);
 
