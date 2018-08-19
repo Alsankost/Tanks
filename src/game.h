@@ -5,6 +5,13 @@
 
 #include "./collisions.h"
 
+enum Direction {
+	TD_FRONT,
+	TD_BACK,
+	TD_LEFT,
+	TD_RIGHT
+};
+
 class Map;
 
 class GameObject {
@@ -36,7 +43,7 @@ class GameObject {
 		void setPosition(int x, int y);
 
 		int maskWidth();
-		int heightMask();
+		int maskHeight();
 
 		Rectangle getMask();
 };

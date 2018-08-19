@@ -1,6 +1,6 @@
 #include "./player.h"
 
-#define PLAYER_SPEED 5
+#define PLAYER_SPEED 3
 
 Player::Player(int x, int y):Tank(x, y, true) {
 
@@ -13,11 +13,30 @@ void Player::start(Map* map) {
 void Player::update(Map* map) {
 	Tank::update(map);
 
-	for (int i = 0; i < 4; i++) {
-		if (moveSignals[i]) {
-			Tank::forward(PLAYER_SPEED);
-			break;
-		}
+	bool moveFlag = false;
+
+	if (moveSignals[0]) {
+		Tank::setDirection(TD_FRONT);
+		moveFlag = true;		
+	}
+
+	if (moveSignals[1]) {
+		Tank::setDirection(TD_BACK);
+		moveFlag = true;		
+	}
+
+	if (moveSignals[2]) {
+		Tank::setDirection(TD_LEFT);
+		moveFlag = true;		
+	}
+
+	if (moveSignals[3]) {
+		Tank::setDirection(TD_RIGHT);
+		moveFlag = true;		
+	}
+	
+	if (moveFlag) {
+		Tank::forward(PLAYER_SPEED);
 	}
 }
 
@@ -49,7 +68,7 @@ void Player::draw(int x, int y) {
 	Tank::draw(x, y);
 }
 
-void Player::sendMoveSignal(TankDirection dir, bool val) {
+void Player::sendMoveSignal(Direction dir, bool val) {
 	switch (dir) {
 		case TD_FRONT:
 			moveSignals[0] = val;

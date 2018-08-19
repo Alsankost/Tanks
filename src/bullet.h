@@ -1,18 +1,21 @@
-#ifndef __PLAYER_H__
-#define __PLAYER_H__
+#ifndef __BULLET_H__
+#define __BULLET_H__
 
-#include "./tanks.h"
+#include "./game.h"
 
-class Player : public Tank {
-	private:
-		//Signals: FRONT BACK LEFT RIGHT
-		bool moveSignals[4] = {false, false, false, false};
+class Bullet : public GameObject {
+	protected:
+		int speed;
+		int damage;
+		bool flagHp = true;
+		Direction direction;
 
 	public:
-		Player(int x, int y);
+		Bullet(int x, int y, Direction dir, int speed, int damage);
+		Bullet(int x, int y, Direction dir);
 
+		//Custom:
 		virtual void start(Map* map);
-
 		virtual void update(Map* map);
 		virtual void dead(Map* map);
 		virtual void collision(Map* map, GameObject* obj);
@@ -24,8 +27,6 @@ class Player : public Tank {
 		virtual bool isDead();
 
 		virtual void draw(int x, int y);
-
-		void sendMoveSignal(Direction dir, bool val);
 };
 
 #endif

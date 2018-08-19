@@ -3,18 +3,11 @@
 
 #include "./game.h"
 
-enum TankDirection {
-	TD_FRONT,
-	TD_BACK,
-	TD_LEFT,
-	TD_RIGHT
-};
-
 class Tank : public GameObject {
 	protected:
 		bool flagHp = true;
 		bool flagFriend;
-		TankDirection direction;
+		Direction direction;
 
 	public:
 		Tank(int x, int y, bool isFriend);
@@ -36,7 +29,9 @@ class Tank : public GameObject {
 		void turnLeft();
 		void turnRight();
 		void forward(int k);
-		void setDirection(TankDirection dir);
+
+		void      setDirection(Direction dir);
+		Direction getDirection();
 };
 
 #endif

@@ -29,7 +29,7 @@ int GameObject::maskWidth() {
 	return this->w_mask;
 }
 
-int GameObject::heightMask() {
+int GameObject::maskHeight() {
 	return this->h_mask;
 }
 
@@ -65,15 +65,16 @@ void Map::update() {
 		GameObject* obj = *it;
 		if (obj->isDead()) {
 			obj->dead(this);
-			delete obj;
 			objects.erase(it);
+			//delete obj;
 			continue;
 		}
 		int xp = obj->getX(),
 		    yp = obj->getY();
 		obj->update(this);
 		bool stopFlag = observeCollisions(obj);
-		if (stopFlag) {
+		if (stopFlag || obj->getX() < 0 || obj->getX() + obj->maskWidth() > this->width ||
+			obj->getY() < 0 || obj->getY() + obj->maskHeight() > this->height) {
 			obj->setPosition(xp, yp);
 		}
 	}

@@ -102,6 +102,10 @@ void Tank::forward(int k) {
 	}
 }
 
-void Tank::setDirection(TankDirection dir) {
+void Tank::setDirection(Direction dir) {
 	this->direction = dir;
+}
+
+Direction Tank::getDirection() {
+	return this->direction;
 }

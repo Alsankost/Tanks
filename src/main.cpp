@@ -5,6 +5,7 @@
 #include "./game.h"
 #include "./tanks.h"
 #include "./player.h"
+#include "./bullet.h"
 
 #define W_WIDTH 640
 #define W_HEIGHT 480
@@ -48,12 +49,15 @@ void pressKey(int key, int xx, int yy) {
 		case GLUT_KEY_DOWN:
 			player->sendMoveSignal(TD_BACK, true);
 			break;
-		case GLUT_KEY_RIGHT:
-			player->sendMoveSignal(TD_RIGHT, true);
-			break;
 		case GLUT_KEY_LEFT:
 			player->sendMoveSignal(TD_LEFT, true);
 			break;
+		case GLUT_KEY_RIGHT:
+			player->sendMoveSignal(TD_RIGHT, true);
+			break;
+		case GLUT_KEY_HOME:
+			currentMap->addObject(new Bullet(player->getX(), player->getY(), player->getDirection()));
+
 	}
 }
 
@@ -65,11 +69,11 @@ void releaseKey(int key, int xx, int yy) {
 		case GLUT_KEY_DOWN:
 			player->sendMoveSignal(TD_BACK, false);
 			break;
-		case GLUT_KEY_RIGHT:
-			player->sendMoveSignal(TD_RIGHT, false);
-			break;
 		case GLUT_KEY_LEFT:
 			player->sendMoveSignal(TD_LEFT, false);
+			break;
+		case GLUT_KEY_RIGHT:
+			player->sendMoveSignal(TD_RIGHT, false);
 			break;
 	}
 }
@@ -109,8 +113,12 @@ int main(int argc, char **argv) {
 	glutCreateWindow("Tanks 0.0.1a");
 	std::cout << "#2" << '\n';
 
-	currentMap = new Map(W_HEIGHT, W_HEIGHT);
+	currentMap = new Map(W_WIDTH, W_HEIGHT);
 	currentMap->addObject(new BrickWall(100, 100));
+	currentMap->addObject(new BrickWall(116, 100));
+	currentMap->addObject(new BrickWall(132, 100));
+	currentMap->addObject(new BrickWall(132, 116));
+	currentMap->addObject(new BrickWall(132, 132));
 	currentMap->addObject(player);
 	std::cout << "#3" << '\n';
 
